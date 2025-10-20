@@ -1,4 +1,6 @@
-echo -e "writing my PhD..."
+#!/bin/bash
+
+echo -e "writing my thesis..."
 
 # make environment
 python3 -m venv .venv

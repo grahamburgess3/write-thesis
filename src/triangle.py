@@ -35,7 +35,7 @@ def main():
 
     fig, ax = plt.subplots(1, 1)    
     ax.hist(X, density=True, bins='auto', histtype='stepfilled', alpha=0.2)
-    fig.suptitle("Remaining service time | t="+str(x_0))
+    fig.suptitle("Triangle(" + str(service_dist['low']) + "," + str(service_dist['mid']) + "," + str(service_dist['high']) + "). Remaining service time given already in service for "+str(x_0) + " time units.")
     plt.savefig('triangle_dist.pdf', dpi=300, bbox_inches='tight')
     plt.close()
 
