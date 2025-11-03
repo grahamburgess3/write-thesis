@@ -1,2 +1,3 @@
 # write-thesis
-To do: write my phd thesis
+chmod +x ./write_thesis.sh
+./write_thesis.sh

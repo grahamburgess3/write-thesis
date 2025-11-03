@@ -1,0 +1,27 @@
+# Sample from triang dist if already in service
+import scipy
+import yaml
+import sys
+
+def main():
+    config = yaml.safe_load(sys.stdin)
+    service_dist = config.get("service_dist")
+    x0 = config.get("x0")
+    N = config.get("N")
+    
+    X = []
+    c = (service_dist['mid'] - service_dist['low']) / (service_dist['high'] - service_dist['low'])
+    loc = service_dist['low']
+    scale = service_dist['high'] - service_dist['low']
+    for i in range(N):
+        generating = True
+        while generating:
+            x = scipy.stats.triang.rvs(c,loc,scale)
+            if x >= x0:
+                time_in_accomm = x-x0
+                generating = False
+        X.append(time_in_accomm)
+    print(X)
+        
+if __name__ == "__main__":
+    main()

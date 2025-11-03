@@ -2,19 +2,15 @@
 
 echo -e "writing my thesis..."
 
-# make environment
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+# change path to current working directory
+export PATH="$PWD:$PATH"
+
+# make triangle/plot exeutable
+chmod +x ./triangle
+chmod +x ./plot
 
 # run analysis
-cd experiment1
-python ./../src/triangle.py --config config.yaml
-cd ./../
+cat config.yaml | triangle | plot
 
-# compile thesis
-cd thesis
+# Write report
 pdflatex main.tex
-bibtex main
-for run in {1..2}; do pdflatex main.tex; done
-cd ./../
